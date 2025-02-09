@@ -23,7 +23,3 @@ def get_mask_account(personal_account: Union[int, str]) -> str:
         return "Все значения должны быть цифрами"
     else:
         return f"**{personal_account_str[-4:]}"
-
-
-print(get_mask_card_number(1200334599106670))
-print(get_mask_account(12345678912345678912))
