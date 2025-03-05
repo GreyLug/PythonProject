@@ -20,12 +20,19 @@ def mask_account_card(card_or_account: str) -> str:
                 name_card.append(i)
         str_numbers_card = "".join(numbers_card)
         return f"{name_card[0]} {name_card[1]} {get_mask_card_number(str_numbers_card)}"
+    else:
+        raise ValueError("Введите коректное имя карты или счет")
 
 
 def get_date(my_date: str) -> str:
     """Функция конвертирования даты"""
-    date_obj = datetime.strptime(my_date, "%Y-%m-%dT%H:%M:%S.%f")
-    return date_obj.strftime("%d.%m.%Y")
+    if not my_date:
+        raise ValueError("Дата не передана")
+    try:
+        formatted_date = datetime.strptime(my_date, "%Y-%m-%dT%H:%M:%S.%f")
+        return formatted_date.strftime("%d.%m.%Y")
+    except ValueError:
+        raise ValueError("Некорректный формат даты")
 
 
 print(get_date("2024-03-11T02:26:18.671407"))

@@ -2,17 +2,22 @@ def filter_by_state(banking_operations: list[dict], state: str = "EXECUTED") -> 
     """Функия возврата банковских операций по ключу"""
     new_banking_operations = []
     for item in banking_operations:
-        if item["state"] == state:
+        if not item["state"]:
+            raise KeyError("В функцию не передан ключ")
+        elif item["state"] == state:
             new_banking_operations.append(item)
     return new_banking_operations
 
 
 def sort_by_date(banking_transactions: list[dict], sorting_order: bool = True) -> list[dict]:
     """Функция сортировки банковских операций по дате"""
-    new_banking_transactions = sorted(
-        banking_transactions, key=lambda dictionary: dictionary["date"], reverse=sorting_order
-    )
-    return new_banking_transactions
+    if not isinstance(banking_transactions, list):
+        raise TypeError("banking_transactions должен быть списком")
+    else:
+        new_banking_transactions = sorted(
+            banking_transactions, key=lambda dictionary: dictionary["date"], reverse=sorting_order
+        )
+        return new_banking_transactions
 
 
 print(
