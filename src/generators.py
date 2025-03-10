@@ -83,12 +83,13 @@ def filter_by_currency(transactions, currency="USD"):
     """Функция-генератор фильтрации по валюте"""
     if transactions != []:
         for transaction in transactions:
-             if not transaction["operationAmount"]["currency"]["code"]:
-                 raise KeyError("В функцию не передан ключ")
-             elif transaction["operationAmount"]["currency"]["code"] == currency:
-                 yield transaction
+            if not transaction["operationAmount"]["currency"]["code"]:
+                raise KeyError("В функцию не передан ключ")
+            elif transaction["operationAmount"]["currency"]["code"] == currency:
+                yield transaction
     else:
         raise KeyError("Нет необходимых данных")
+
 
 # currency_transactions = filter_by_currency(transactions)
 #
@@ -104,6 +105,7 @@ def transaction_descriptions(transactions):
     else:
         raise KeyError("Нет необходимых данных")
 
+
 # descriptions = transaction_descriptions(transactions)
 
 # for _ in range(4):
@@ -115,9 +117,11 @@ def card_number_generator(start, stop):
     if start <= 0 or 9999999999999999 < stop or start > stop:
         raise ValueError("Не верно указанны данные для генерации номеров карт")
     elif isinstance(start, int) and isinstance(stop, int):
-        for i in range(start, stop+1):
+        for i in range(start, stop + 1):
             new_number_card = str(i).zfill(16)
-            formatted_card = f"{new_number_card[:4]} {new_number_card[4:8]} {new_number_card[8:12]} {new_number_card[12:]}"
+            formatted_card = (
+                f"{new_number_card[:4]} {new_number_card[4:8]} {new_number_card[8:12]} {new_number_card[12:]}"
+            )
             yield formatted_card
     else:
         raise TypeError("Не верное значение аргументов")

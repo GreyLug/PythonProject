@@ -62,7 +62,7 @@ def test_empty_currency_filter_by_currency(empty_list):
 # Тест положительного сценария
 @pytest.mark.parametrize(
     "expected_result_1, expected_result_2, expected_result_3, expected_result_4",
-    [("Перевод организации", "Перевод со счета на счет", "Перевод со счета на счет", "Перевод с карты на карту")]
+    [("Перевод организации", "Перевод со счета на счет", "Перевод со счета на счет", "Перевод с карты на карту")],
 )
 def test_transaction_descriptions(
     transactions_test, expected_result_1, expected_result_2, expected_result_3, expected_result_4
