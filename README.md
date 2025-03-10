@@ -26,6 +26,9 @@
 - `get_mask_account`: функция маскировки номера счета
 - `sort_by_date`: функция сортировки банковских операций по дате
 - `filter_by_state`: функия возврата банковских операций по ключу
+- `transaction_descriptions`: фунция-генератор вывода названий операций
+- `card_number_generator`: функция генерации номеров банковских карт
+- `filter_by_currency`: функция-генератор фильтрации по валюте
 
 ## Тестирование:
 
@@ -34,6 +37,7 @@
 - `masks`: функции `get_mask_account` и `get_mask_card_number`.
 - `proccessing`: функции `filter_by_state` и `sort_by_date`.
 - `widget`: функции `get_date` и `mask_account_card`.
+- `generators`: функции `filter_by_currency`, `card_number_generator` и `transaction_descriptions`.
 
 Покрытие тестами составляет 98% кода проекта.
 
